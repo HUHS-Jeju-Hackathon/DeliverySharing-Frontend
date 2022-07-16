@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="ListPage.css">
+    <title>ListPage</title>
+</head>
+<body>
+    <div class="logo">NBbang</div>
+    <div class="logo_margin"></div>
+    <div class="main" id="main"></div>
+
+<script>
+    axios.get('http://192.168.225.53:3003/writing')
+    .then((res) => {
+        console.log(res)
+        for (var i=0; i<=res.data.length;i++) {            
+            title=res.data[i].title;
+            writer=res.data[i].writerNickname;
+            writingId=res.data[i].writingId;
+
+            const post_list=`
+            <div class="posts" id="posts" onclick="location.href='View.html'">
+                <p class="title">`+title+`</p>
+                <p class="writer">`+writer+`</p>
+            </div>
+            <div class="post_margin"></div>
+            `
+
+            document.getElementById('main').innerHTML+=post_list;
+        }
+    })
+    .catch((error) => {
+        console.log('에러\n' + error)
+    });
+
+</script>
+</html>

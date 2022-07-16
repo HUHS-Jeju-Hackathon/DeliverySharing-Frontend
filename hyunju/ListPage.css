@@ -1,0 +1,77 @@
+body {
+  margin: 0 auto;
+}
+
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: #f8f9f9;
+  width: 375px;
+}
+
+.logo_margin {
+  margin: 0 auto;
+  width: 375px;
+  height: 10px;
+  background-color: #f8f9f9;
+}
+
+.main {
+  width: 375px;
+  height: auto;
+  background-color: #f8f9f9;
+  margin: 0 auto;
+}
+
+.posts {
+  background-color: #f5b7b1;
+  margin: 0 5%;
+  height: auto;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.posts:hover {
+  background-color: #f1948a;
+}
+
+.title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.restaurant {
+  display: flex;
+  align-items: center;
+}
+
+#town {
+  margin: 0 5px 0 0;
+}
+
+#restaurantName {
+}
+
+.writer_margin {
+  height: 25px;
+}
+
+.writer {
+  font-size: 12px;
+  text-align: right;
+  margin: 0 5px 0 0;
+}
+
+.post_margin {
+  height: 10px;
+}
