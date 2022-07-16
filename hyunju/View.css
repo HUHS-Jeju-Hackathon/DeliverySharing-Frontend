@@ -1,0 +1,243 @@
+body {
+    margin: 0 auto;
+  }
+  
+.main {
+    width: 375px;
+    height: auto;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #f8f9f9;
+  }
+  
+  .contents {
+    padding: 5px;
+    margin: 0 5%;
+  }
+  
+  #title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #writer {
+    font-size: 12px;
+    text-align: right;
+  }
+  
+  .town{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin: 0 0 10px 0;
+  }
+
+  #town_label {
+    margin: 0 5px 0 0;
+    text-align: left;
+    width: 30%;
+    
+  }
+
+  #town {
+    /* margin: 0 5px 0 0; */
+    width: 60%;
+    text-align: left;
+  }
+
+.restaurantName{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+}
+
+  #restaurantName_label {
+    /* margin: 0 5px 0 0; */
+    text-align: left;
+    width: 30%;
+  }
+  
+  #restaurantName {
+    /* margin: 0 5px 0 0; */
+    width: 60%;
+  }
+
+  .restaurantLink{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #restaurantLink_label {
+    margin: 0 5px 0 0;
+    width: 30%;
+  }
+
+  #restaurantLink {
+    /* margin: 0 5px 0 0; */
+    width: 60%;
+  }
+  
+  .contact {
+    display: flex;
+    align-items: center;
+  }
+  
+  #contactLink {
+    /* margin: 0 0 0 5px; */
+  }
+  
+  #map {
+    height: 200px;
+    width: auto;
+    background-color: #000;
+    margin: 0 auto;
+  }
+  
+  .min {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between; 
+    align-items: center;   
+  }
+  
+  #minPrice_label {
+    /* margin: 0 0 0 5px; */
+    width:30%;
+    text-align: left;
+  }
+
+  #minPrice {
+    margin: 0 0 0 5px;
+    width: 60%;
+    text-align: left;
+  }
+  
+  
+  #description {
+  }
+  
+  .button_area {
+    text-align: center;
+  }
+  
+  .button {
+    background-color: #f5b7b1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #f1948a;
+  }
+  
+  #finish {
+    display: none;
+  }
+  
+  #delete {
+    display: none;
+  } */
+
+
+
+/* 
+구버전
+body {
+  margin: 0 auto;
+}
+
+.main {
+  width: 375px;
+  height: auto;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #f8f9f9;
+}
+
+.contents {
+  padding: 5px;
+  margin: 0 5%;
+}
+
+#title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#writer {
+  font-size: 12px;
+  text-align: right;
+}
+
+#town {
+  margin: 0 5px 0 0;
+  font-size: 16px;
+}
+
+#restaurantName {
+  margin: 0 5px 0 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#restaurantLink {
+  margin: 0 5px 0 0;
+  cursor: pointer;
+  color: blue;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+}
+
+#contactLink {
+  margin: 0 0 0 5px;
+}
+
+#map {
+  height: 200px;
+  width: auto;
+  background-color: #000;
+  margin: 0 auto;
+}
+
+.min {
+  display: flex;
+  align-items: center;
+}
+
+#minPrice {
+  margin: 0 0 0 5px;
+}
+
+#description {
+}
+
+.button_area {
+  text-align: center;
+}
+
+.button {
+  background-color: #f5b7b1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #f1948a;
+}
+
+#finish {
+  display: none;
+}
+
+#delete {
+  display: none;
+} */
