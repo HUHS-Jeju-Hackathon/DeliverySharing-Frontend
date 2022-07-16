@@ -83,11 +83,18 @@ body {
   .contact {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+  }
+
+  #contactLink_label {
+    width: 30%;
+    text-align: left;
   }
   
   #contactLink {
-    /* margin: 0 0 0 5px; */
-  }
+    width: 60%;
+    text-align: left;
+}
   
   #map {
     height: 200px;
@@ -114,11 +121,7 @@ body {
     width: 60%;
     text-align: left;
   }
-  
-  
-  #description {
-  }
-  
+
   .button_area {
     text-align: center;
   }
