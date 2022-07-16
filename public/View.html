@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="View.css">
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wcdb7754ds&submodules=geocoder"></script>
+    <title>View</title>
+</head>
+<body>
+    <div class="main">
+        <div class="contents">
+            <p id="title">제목</p>
+            <p id="writer">작성자 닉네임</p>
+            <div class="town">
+                <div id="town_label">위치</div>
+                <div id="town">위치</div>
+            </div>
+            <div class="restaurantName">
+                <p id="restaurantName_label">식당 이름</p>
+                <p id="restaurantName">test 식당</p>
+            </div>
+            
+            <div class="restaurantLink">
+                <p id="restaurantLink_label">식당 링크</p>
+                <p id="restaurantLink"> htp//</p>
+            </div>
+            <div class="min">
+                <p id="minPrice_label">최소금액</p>
+                <p id="minPrice">\10000</p>
+            </div>
+            <div class="contact">
+                <p id="contactLink_label">연락수단</p>
+                <p id="contactLink">010-0715-0717</p>
+            </div>
+            <p id="description">비고</p>
+            <div id="map"><!--지도--></div>
+        </div>
+
+        <!--구버전-->
+        <!-- <div class="contents">
+            <p id="title">제목</p>
+            <p id="writer">작성자 닉네임</p>
+            <p id="town">동네</p>
+            <p id="restaurantName">식당이름</p>
+            <p id="restaurantLink">식당 정보 보기 ></p>
+            <div class="min">
+                <p>최소금액</p>
+                <p id="minPrice">\10000</p>
+            </div>
+            <div class="contact">
+                <p>연락수단</p>
+                <p id="contactLink">010-0715-0717</p>
+            </div>
+            <p id="description">비고</p>
+            <div id="map"><!--지도--><!--</div>-->
+        <!--</div> -->
+
+        <div class="button_area">
+            <input type="button" value="돌아가기" class="button" id="return"/>
+            <input type="button" value="마감" class="button" id="finish"/>
+            <input type="button" value="삭제" class="button" id="delete"/>
+        </div>
+    </div>
+
+<script>
+    // 돌아가기
+    document.getElementById('return').onclick=function(){
+        location.href='ListPage.html'
+    }
+
+    //해당하는 글 뿌려주기
+    // writingId=sessionStorage.getItem('writingId')
+    writingId=85
+    url='http://192.168.225.53:3003/writing/'+writingId
+
+    axios.get(url)
+    .then((res) => {
+        console.log(res)
+        title=res.data.title;
+        writer=res.data.writerNickname;
+        text=res.data.text;
+        restaurantName=res.data.restaurantName;
+        restaurantLink=res.data.restaurantLink;
+        minPrice=res.data.minPrice;
+        town=res.data.town;
+        contactLink=res.data.contactLink;
+        writingId=res.data.writingId;
+        writerId=res.data.writerId
+
+        document.getElementById('title').textContent=title;
+        document.getElementById('description').textContent=text;
+        document.getElementById('restaurantName').textContent=restaurantName;
+        document.getElementById('restaurantLink').onclick=function(){
+            location.href=restaurantLink
+        }
+        document.getElementById('minPrice').textContent='\\'+minPrice;
+        document.getElementById('town').textContent=town;
+        document.getElementById('contactLink').textContent=contactLink;
+        document.getElementById('writer').textContent=writer;
+
+        //세션스토리지 테스트
+        // sessionStorage.setItem("userId", 2) 
+
+        // 현재 작성자인지 확인 > 삭제+마감 버튼 노출
+        current_user=sessionStorage.getItem("userId");
+        console.log(current_user)
+        if (current_user==writerId){
+            document.getElementById('finish').style.display="inline-block";
+            document.getElementById('delete').style.display="inline-block";
+        }
+
+        // 마감
+        document.getElementById('finish').onclick=function(){
+            con=confirm("마감하시겠습니까?");
+            if (con===true){
+                url="http://192.168.225.53:3003/writing/"+writingId+"/end";
+
+                axios.get(url, 
+                {params :{userId:writerId}});
+
+                document.getElementById('title').textContent="[마감] "+title;
+            }
+        }    
+
+        //삭제
+        document.getElementById('delete').onclick=function(){
+            chk=confirm("삭제하시겠습니까?");
+            if(chk===true){
+                url="http://192.168.225.53:3003/writing/"+writingId
+                axios.delete(url)
+                prompt("삭제가 완료되었습니다.")
+                location.href='ListPage.html'
+            }
+        }        
+
+        //지도
+        var map = new naver.maps.Map('map', {
+        center: new naver.maps.LatLng(res.data.restaurantLat, res.data.restaurantLng),
+        scaleControl: false,
+        mapDataControl: false,
+        zoom: 15
+        });
+
+        var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(res.data.restaurantLat, res.data.restaurantLng),
+        map: map
+        });
+
+        var info = new naver.maps.InfoWindow({
+            content: [
+                '<div class="iw_inner">',
+                '   <h5>'+res.data.restaurantName+'</h5>',
+                '   <p>'+res.data.restaurantAddress+'</p>',
+                '</div>'
+            ].join('')
+        });
+
+        naver.maps.Event.addListener(marker, "click", function(e) {
+            if (info.getMap()) {
+                info.close();
+            } else {
+                info.open(map, marker);
+            }
+        });
+    })
+    .catch((error) => {console.log(error)});
+</script>
+</body>
+</html>

@@ -1,3 +1,12 @@
 body {
   margin: 0px;
 }
+iframe {
+  height: calc(100vh - 375px);
+  position: relative;
+  left: 50%;
+  margin-left: -186.5px;
+  width: 375px;
+  border: none;
+  height: 100vh;
+}
